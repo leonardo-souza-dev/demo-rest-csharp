@@ -7,7 +7,17 @@ namespace Ecommerce.Application.Impl.Services
     {
         public Usuario CadastrarUsuario(string email, string senha)
         {
-            return new Usuario();
+            if (!validarDados(senha)) {
+                return null;
+            }
+
+            //implementação de persistência aqui
+        
+            return new Usuario(email, senha);
         }
+
+    private bool validarDados(string senha) {        
+        return senha.Length > 8;
+    }
     }
 }
