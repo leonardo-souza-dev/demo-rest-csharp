@@ -26,7 +26,7 @@ namespace Ecommerce.Tests
         /// eu preciso saber se o repositório é chamado ao salvar um produto válido no serviço
         [Test]
         public void Foo3() 
-        {   
+        {       
         }
 
         /// preciso validar que quando inserir produto com sucesso pela controller

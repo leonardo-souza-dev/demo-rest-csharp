@@ -1,4 +1,4 @@
-﻿using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Application.Interfaces;
 
 namespace Ecommerce.Application.Impl.Services
 {

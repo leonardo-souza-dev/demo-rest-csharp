@@ -1,4 +1,4 @@
-﻿namespace Ecommerce.Domain.Interfaces
+﻿namespace Ecommerce.Application.Interfaces
 {
     public interface ILogger
     {
