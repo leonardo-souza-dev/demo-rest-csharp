@@ -1,7 +1,5 @@
-using Ecommerce.Application.Impl;
 using Ecommerce.Domain.Models;
-using Ecommerce.Domain.Repositories;
-using Moq;
+using Ecommerce.Application.Impl.Services;
 using NUnit.Framework;
   
 namespace Ecommerce.Tests
@@ -9,9 +7,16 @@ namespace Ecommerce.Tests
     public class ProdutoTestesDeUnidade
     {        
         [Test]
-        public void foo()
+        public void NaoDeveCadastrarUsuarioComSenhaCurta()
         {
-            Assert.True(true);
+            string email = "testes@testes.com";
+            string senha = "1";
+
+            IdentityService sut = new IdentityService();
+
+            Usuario usuario = sut.CadastrarUsuario(email, senha);
+
+            Assert.IsNull(usuario);
         }
     }
 }
