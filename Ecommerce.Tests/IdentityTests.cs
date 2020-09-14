@@ -4,7 +4,7 @@ using NUnit.Framework;
   
 namespace Ecommerce.Tests
 {
-    public class ProdutoTestesDeUnidade
+    public class IdentityTests
     {        
         [Test]
         public void NaoDeveCadastrarUsuarioComSenhaCurta()
