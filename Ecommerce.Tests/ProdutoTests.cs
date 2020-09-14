@@ -11,29 +11,19 @@ namespace Ecommerce.Tests
 {
     public class ProdutoTests
     {
-        /// eu espero conseguir gravar um produto no ProdutoRepositoryImpl
         [Test]
-        public void Foo1() 
+        public void naoDeveInserirProdutoNaBaseSePrecoMaiorQue10000() 
         {
         }
 
-        /// eu não devo conseguir inserir um produto quando o preço for maior que 10000
         [Test]
-        public void Foo2() 
+        public void deveLogarQuandoPrecoForaDaFaixa() 
         {
         }
 
-        /// eu preciso saber se o repositório é chamado ao salvar um produto válido no serviço
         [Test]
-        public void Foo3() 
-        {   
-        }
-
-        /// preciso validar que quando inserir produto com sucesso pela controller
-        /// o produto retornado não tenha os atributos alterados
-        [Test]
-        public void Foo4()
-        {
+        public void deveRetornarMensagemCorretaAoInserirProdutoNaController() 
+        {  
         }
     }
 }
