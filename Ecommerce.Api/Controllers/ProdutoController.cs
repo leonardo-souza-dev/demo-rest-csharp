@@ -1,5 +1,5 @@
 ﻿using Ecommerce.Application.Messages;
-using Ecommerce.Domain.Interfaces;
+using Ecommerce.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Api.Controllers

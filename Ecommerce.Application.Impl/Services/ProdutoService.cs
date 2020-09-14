@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Domain.Interfaces;
 using Ecommerce.Domain.Models;
 using Ecommerce.Domain.Repositories;
+using Ecommerce.Application.Interfaces;
 
 namespace Ecommerce.Application.Impl.Services
 {
