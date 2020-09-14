@@ -1,6 +1,5 @@
 using Ecommerce.Application.Impl.Services;
 using Ecommerce.Application.Interfaces;
-using Ecommerce.Domain.Interfaces;
 using Ecommerce.Domain.Repositories;
 using Ecommerce.Repository;
 using Microsoft.AspNetCore.Builder;
