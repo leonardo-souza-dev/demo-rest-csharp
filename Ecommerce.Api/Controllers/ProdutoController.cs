@@ -15,8 +15,8 @@ namespace Ecommerce.Api.Controllers
             _produtoService = produtoService;
         }
 
-        [HttpPost("inserirProduto")]
-        public ProdutoDto InserirProduto(string nome, decimal preco)
+        [HttpPost()]
+        public ProdutoDto Inserir(string nome, decimal preco)
         {
             var produto = _produtoService.Inserir(nome, preco);
 
@@ -27,6 +27,21 @@ namespace Ecommerce.Api.Controllers
             else
             {
                 return new ProdutoDto(produto, false, "Ocorreu um erro ao inserir o produto");
+            }
+        }
+
+        [HttpGet]
+        public ProdutoDto Obter(int id)
+        {
+            var produto = _produtoService.Obter(id);
+
+            if (produto != null)
+            {
+                return new ProdutoDto(produto, true, "Produto obtido com sucesso");
+            }
+            else
+            {
+                return new ProdutoDto(produto, false, "Ocorreu um erro ao obter o produto");
             }
         }
     }

@@ -27,5 +27,10 @@ namespace Ecommerce.Application.Impl.Services
 
             return _produtoRepository.Inserir(nome, preco);
         }
+
+        public Produto Obter(int id)
+        {
+            return _produtoRepository.Obter(id);
+        }
     }
 }

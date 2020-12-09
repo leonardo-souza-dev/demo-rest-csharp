@@ -10,5 +10,10 @@ namespace Ecommerce.Repository
             // rotina de persistencia aqui
             return new Produto(nome, preco);
         }
+
+        public Produto Obter(int id)
+        {
+            return new Produto(id, "TV", 1999);
+        }
     }
 }
