@@ -3,7 +3,7 @@
     public class Usuario
     {
         public string Email { get; }
-        public string Senha { get;  }
+        public string Senha { get; }
 
         public Usuario(string email, string senha)
         {

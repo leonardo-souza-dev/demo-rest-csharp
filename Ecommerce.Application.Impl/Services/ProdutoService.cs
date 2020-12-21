@@ -1,4 +1,4 @@
-﻿using Ecommerce.Domain.Interfaces;
+﻿using Ecommerce.Application.Interfaces;
 using Ecommerce.Domain.Models;
 using Ecommerce.Domain.Repositories;
 
