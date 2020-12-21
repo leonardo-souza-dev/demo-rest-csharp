@@ -7,7 +7,7 @@ namespace Ecommerce.Application.Impl.Services
     {
         public Usuario CadastrarUsuario(string email, string senha)
         {
-            return new Usuario();
+            return senha.Length > 8 ? new Usuario(email, senha) : null;
         }
     }
 }
