@@ -8,11 +8,13 @@ namespace Ecommerce.Application.Impl.Services
     {
         private readonly IProdutoRepository _produtoRepository;
         private readonly ILogger _logger;
+        private readonly IMensageria _mensageria;
 
-        public ProdutoService(IProdutoRepository produtoRepository, ILogger logger)
+        public ProdutoService(IProdutoRepository produtoRepository, ILogger logger, IMensageria mensageria)
         {
             _produtoRepository = produtoRepository;
             _logger = logger;
+            _mensageria = mensageria;
         }
 
         public Produto Inserir(string nome, decimal preco)
@@ -25,7 +27,16 @@ namespace Ecommerce.Application.Impl.Services
                 return null;
             }
 
-            return _produtoRepository.Inserir(nome, preco);
+            var produto = _produtoRepository.Inserir(nome, preco);
+
+            if (produto != null)
+            {
+                _mensageria.Enviar(produto);
+
+                return produto;
+            }
+
+            return null;
         }
     }
 }
