@@ -1,6 +1,6 @@
 ﻿namespace Ecommerce.Application.Interfaces
 {
-    public interface IMensageria
+    public interface IMensageriaService
     {
         void Enviar(object mensagem);
     }

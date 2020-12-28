@@ -1,12 +1,12 @@
 using Ecommerce.Domain.Models;
 using Ecommerce.Application.Impl.Services;
-using NUnit.Framework;
-  
+using Xunit;
+
 namespace Ecommerce.Tests
 {
     public class IdentityTests2
-    {        
-        [Test]
+    {
+        [Fact]
         public void NaoDeveCadastrarUsuarioComSenhaCurta()
         {
             // arrange
@@ -19,7 +19,7 @@ namespace Ecommerce.Tests
             Usuario usuario = sut.CadastrarUsuario(email, senha);
 
             // assert
-            Assert.IsNull(usuario);
+            Assert.Null(usuario);
         }
     }
 }

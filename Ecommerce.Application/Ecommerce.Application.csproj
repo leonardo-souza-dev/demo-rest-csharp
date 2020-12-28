@@ -1,16 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Messages\AdicionarProdutoAoCarrinhoResponse.cs" />
-    <Compile Remove="Messages\IncluirProdutoResponse.cs" />
+    <Folder Include="Dto\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Ecommerce.Domain\Ecommerce.Domain.csproj" />
   </ItemGroup>
-
 </Project>

@@ -1,17 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 using Ecommerce.Application.Impl.Services;
 using Ecommerce.Application.Interfaces;
 using Ecommerce.Domain.Repositories;
 using Ecommerce.Repository;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace Ecommerce.Api
-{
+{ 
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -29,19 +37,23 @@ namespace Ecommerce.Api
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IProdutoService, ProdutoService>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
+            services.AddTransient<ILoggerService, LoggerService>();
+            services.AddTransient<IMensageriaService, MensageriaService>();
 
-            services.AddTransient<ILogger, Logger>();
-
-            services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ecommerce API", Version = "V1" });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ecommerce.Api2", Version = "v1" });
             });
         }
 
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecommerce.Api2 v1"));
             }
 
             app.UseHttpsRedirection();
@@ -53,11 +65,6 @@ namespace Ecommerce.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "post API V1");
             });
         }
     }

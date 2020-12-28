@@ -5,25 +5,25 @@ using Ecommerce.Domain.Repositories;
 using Ecommerce.Repository;
 using Ecommerce.Api.Controllers;
 using Moq;
-using NUnit.Framework;
-  
+using Xunit;
+
 namespace Ecommerce.Tests
 {
     public class ProdutoTests
     {
-        [Test]
-        public void naoDeveInserirProdutoNaBaseSePrecoMaiorQue10000() 
+        [Fact]
+        public void naoDeveInserirProdutoNaBaseSePrecoMaiorQue10000()
         {
         }
 
-        [Test]
-        public void deveLogarQuandoPrecoForaDaFaixa() 
+        [Fact]
+        public void deveLogarQuandoPrecoForaDaFaixa()
         {
         }
 
-        [Test]
-        public void deveRetornarMensagemCorretaAoInserirProdutoNaController() 
-        {  
+        [Fact]
+        public void deveRetornarMensagemCorretaAoInserirProdutoNaController()
+        {
         }
     }
 }

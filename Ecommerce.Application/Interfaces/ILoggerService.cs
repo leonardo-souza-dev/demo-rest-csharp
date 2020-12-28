@@ -1,6 +1,6 @@
 ﻿namespace Ecommerce.Application.Interfaces
 {
-    public interface ILogger
+    public interface ILoggerService
     {
         void Gravar(string mensagem);
     }

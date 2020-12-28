@@ -5,24 +5,24 @@ using Ecommerce.Domain.Repositories;
 using Ecommerce.Repository;
 using Ecommerce.Api.Controllers;
 using Moq;
-using NUnit.Framework;
-  
+using Xunit;
+
 namespace Ecommerce.Tests
 {
     public class ProdutoTests2
     {
-        [Test]
-        public void NaoDeveInserirProduto_QuandoPrecoMaiorQue10000() 
+        [Fact]
+        public void NaoDeveInserirProduto_QuandoPrecoMaiorQue10000()
         {
             // arrange
             var nome = "TV";
             var preco = 11000;
             var repository = new Mock<IProdutoRepository>();
-            var logger = new Mock<ILogger>();
-            var mensageria = new Mock<IMensageria>();
+            var logger = new Mock<ILoggerService>();
+            var mensageria = new Mock<IMensageriaService>();
 
             var sut = new ProdutoService(repository.Object, logger.Object, mensageria.Object);
-            
+
             // act
             var produto = sut.Inserir(nome, preco);
 
@@ -30,15 +30,15 @@ namespace Ecommerce.Tests
             Assert.Null(produto);
         }
 
-        [Test]
-        public void DeveLogar_QuandoPrecoMaiorQue10000() 
+        [Fact]
+        public void DeveLogar_QuandoPrecoMaiorQue10000()
         {
             // arrange
             var nome = "TV";
             var preco = 11000;
             var repository = new Mock<IProdutoRepository>();
-            var logger = new Mock<ILogger>();
-            var mensageria = new Mock<IMensageria>();
+            var logger = new Mock<ILoggerService>();
+            var mensageria = new Mock<IMensageriaService>();
 
             var sut = new ProdutoService(repository.Object, logger.Object, mensageria.Object);
 
@@ -49,27 +49,27 @@ namespace Ecommerce.Tests
             logger.Verify(x => x.Gravar("Preço fora da faixa permitida"));
         }
 
-        [Test]
-        public void DeveInserirProduto_QuandoPrecoDentroDaFaixa() 
-        {   
+        [Fact]
+        public void DeveInserirProduto_QuandoPrecoDentroDaFaixa()
+        {
             // arrange
             var nome = "TV";
             var preco = 3000;
             var repository = new Mock<IProdutoRepository>();
-            var logger = new Mock<ILogger>();
-            var mensageria = new Mock<IMensageria>();
+            var logger = new Mock<ILoggerService>();
+            var mensageria = new Mock<IMensageriaService>();
             var produtoFake = new Produto(nome, preco);
             repository.Setup(x => x.Inserir(It.IsAny<string>(), It.IsAny<decimal>())).Returns(produtoFake);
 
             var sut = new ProdutoService(repository.Object, logger.Object, mensageria.Object);
-            
+
             // act
             var produto = sut.Inserir(nome, preco);
 
             // assert
             Assert.NotNull(produto);
-            Assert.AreEqual(nome, produto.Nome);
-            Assert.AreEqual(preco, produto.Preco);
+            Assert.Equal(nome, produto.Nome);
+            Assert.Equal(preco, produto.Preco);
         }
     }
 }

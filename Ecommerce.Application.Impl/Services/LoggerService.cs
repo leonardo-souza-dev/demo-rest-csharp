@@ -2,7 +2,7 @@
 
 namespace Ecommerce.Application.Impl.Services
 {
-    public class Logger : ILogger
+    public class LoggerService : ILoggerService
     {
         public void Gravar(string mensagem)
         {
