@@ -4,34 +4,25 @@ using Ecommerce.Domain.Repositories;
 
 namespace Ecommerce.Application.Impl.Services
 {
-    public class ProdutoService : IProdutoService
+    public record ProdutoService(IProdutoRepository ProdutoRepository,
+                                 ILoggerService LoggerService,
+                                 IMensageriaService MensageriaService) : IProdutoService
     {
-        private readonly IProdutoRepository _produtoRepository;
-        private readonly ILoggerService _loggerService;
-        private readonly IMensageriaService _mensageriaService;
-
-        public ProdutoService(IProdutoRepository produtoRepository, ILoggerService loggerService, IMensageriaService mensageriaService)
-        {
-            _produtoRepository = produtoRepository;
-            _loggerService = loggerService;
-            _mensageriaService = mensageriaService;
-        }
-
         public Produto Inserir(string nome, decimal preco)
         {
-            _loggerService.Gravar("Serviço de produto iniciado");
+            LoggerService.Gravar("Serviço de produto iniciado");
 
             if (preco > 10000)
             {
-                _loggerService.Gravar("Preço fora da faixa permitida");
+                LoggerService.Gravar("Preço fora da faixa permitida");
                 return null;
             }
 
-            var produto = _produtoRepository.Inserir(nome, preco);
+            var produto = ProdutoRepository.Inserir(nome, preco);
 
             if (produto != null)
             {
-                _mensageriaService.Enviar(produto);
+                MensageriaService.Enviar(produto);
 
                 return produto;
             }

@@ -10,13 +10,13 @@ namespace Ecommerce.Tests
         public void NaoDeveCadastrarUsuarioComSenhaCurta()
         {
             // arrange
-            string email = "testes@testes.com";
-            string senha = "1";
+            var email = "testes@testes.com";
+            var senha = "1";
 
-            IdentityService sut = new IdentityService();
+            var sut = new IdentityService();
 
             // act
-            Usuario usuario = sut.CadastrarUsuario(email, senha);
+            var usuario = sut.CadastrarUsuario(email, senha);
 
             // assert
             Assert.Null(usuario);
